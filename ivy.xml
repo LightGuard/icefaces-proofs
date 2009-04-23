@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ivy-module version="1.0" xmlns:m="http://ant.apache.org/ivy/maven">
+<ivy-module version="1.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
     <info organisation="com.octanner" module="poc.icefaces" />
     <configurations defaultconfmapping="compile->default;runtime->master;jetty->default">
-        <conf name="compile" extends="runtime" />
-        <conf name="runtime" />
-        <conf name="test" visibility="private" extends="compile" />
+        <conf name="compile" transitive="false" />
+        <conf name="runtime" extends="compile" transitive="true" />
+        <conf name="test" visibility="private" extends="compile,runtime" />
         <conf name="jetty" visibility="private" />
         <conf name="servlet" extends="runtime" />
     </configurations>
@@ -12,29 +13,29 @@
         <dependency org="org.icefaces" name="icefaces-comps" rev="1.8.0" conf="runtime" />
         <dependency org="org.icefaces" name="icefaces-facelets" rev="1.8.0" conf="runtime" />
         <dependency org="org.icefaces" name="icefaces" rev="1.8.0" conf="runtime->default" />
-        <dependency org="org.jboss.seam" name="jboss-seam" rev="2.1.1.GA" conf="runtime->runtime,provided,master">
-          <artifact name="jboss-seam" type="ejb" ext="jar"/>
+        <dependency org="org.jboss.seam" name="jboss-seam" rev="2.1.1.GA" conf="compile;runtime->runtime,provided,master">
+            <artifact name="jboss-seam" type="ejb" ext="jar" />
         </dependency>
-        <dependency org="javax.transaction" name="jta" rev="1.0.1B" conf="servlet->default"/>
+        <dependency org="javax.transaction" name="jta" rev="1.0.1B" conf="servlet->default" />
         <dependency org="org.hibernate" name="hibernate-validator" rev="3.0.0.GA" force="true" conf="servlet->default" />
         <dependency org="javax.persistence" name="persistence-api" rev="1.0" conf="servlet->master" />
         <dependency org="org.jboss.seam" name="jboss-seam-debug" rev="2.1.1.GA" conf="runtime" />
-        <dependency org="org.jboss.seam" name="jboss-seam-ui" rev="2.1.1.GA" conf="runtime" /> 
+        <dependency org="org.jboss.seam" name="jboss-seam-ui" rev="2.1.1.GA" conf="runtime" />
         <dependency org="org.jboss.seam" name="jboss-seam-ioc" rev="2.1.1.GA" conf="runtime,servlet->default,optional">
-          <exclude org="org.jboss.seam" module="jboss-seam" />
+            <exclude org="org.jboss.seam" module="jboss-seam" />
         </dependency>
         <dependency org="javax.faces" name="jsf-api" rev="1.2_12" conf="compile,servlet->master" />
         <dependency org="javax.faces" name="jsf-impl" rev="1.2_12" conf="servlet->master" />
-        <dependency org="org.codehaus.groovy" name="groovy-all" rev="1.6.1" conf="test->default" />
+        <dependency org="org.codehaus.groovy" name="groovy-all" rev="1.6.1" conf="compile,test->default" />
 
         <dependency org="org.mortbay.jetty" name="jetty-ant" rev="6.1.9" conf="jetty" />
         <dependency org="org.mortbay.jetty" name="jsp-2.1" rev="6.1.9" conf="jetty" />
 
         <exclude org="com.sun.facelets" />
         <exclude org="javax.faces" conf="runtime,!servlet" />
-        <exclude org="org.hibernate" conf="runtime,!servlet"/>
-        <exclude org="javax.transaction" conf="runtime,!servlet"/>
-        <exclude org="javax.persistence" conf="runtime,!servlet"/>
+        <exclude org="org.hibernate" conf="runtime,!servlet" />
+        <exclude org="javax.transaction" conf="runtime,!servlet" />
+        <exclude org="javax.persistence" conf="runtime,!servlet" />
         <exclude org="logkit" module="logkit" />
         <exclude org="avalon-framework" module="avalon-framework" />
         <exclude org="javax.servlet" />
