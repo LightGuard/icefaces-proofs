@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="icefaces_pocs" default="dist" xmlns:ivy="antlib:org.apache.ivy.ant">
+    <description>
+        Jason's ICEfaces PoC container
+    </description>
+
+    <property name="dist.dir" value="build" />
+    <property name="war.dir" value="${dist.dir}/exploded" />
+    <property name="classes.dir" value="${war.dir}/WEB-INF/classes" />
+    <property name="lib.dir" value="${war.dir}/WEB-INF/lib" />
+    <property name="src.dir" value="src/main/java" />
+    <property name="test.src.dir" value="src/test/groovy" />
+    <property name="web.dir" value="src/main/webapp" />
+
+    <target name="-ask-deploy-env" unless="build-type">
+      <input addproperty="build-type" message="Are you deploying to JBoss or a servlet container?" validargs="jboss,servlet" defaultvalue="jboss"/> 
+    </target>
+
+    <target name="-init" depends="-ask-deploy-env">
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="./build-lib/ivy-2.0.0.jar" />
+        <mkdir dir="${dist.dir}" />
+        <mkdir dir="${war.dir}" />
+        <mkdir dir="${classes.dir}" />
+        <mkdir dir="${lib.dir}" /> 
+
+        <condition property="build-jboss">
+          <equals arg1="${build-type}" arg2="jboss" trim="true" />
+        </condition>
+    </target>
+
+    <target name="-resolve-servlet" depends="-init" unless="build-jboss">
+        <echo message="Resolving for servlet configuration" />
+        <ivy:settings file="ivysettings.xml" />
+        <ivy:resolve file="ivy.xml" conf="compile" log="quiet"/>
+        <ivy:cachepath pathid="compile.classpath" conf="compile" log="download-only" />
+        <ivy:cachefileset setid="runtime.fileset" conf="servlet" log="download-only" />
+    </target>
+
+    <target name="-resolve-jboss" depends="-init" if="build-jboss"> 
+        <echo message="Resolving for JBoss configuration" />
+        <ivy:settings file="ivysettings.xml" />
+        <ivy:resolve file="ivy.xml" conf="compile" log="quiet"/>
+        <ivy:cachepath pathid="compile.classpath" conf="compile" log="download-only" />
+        <ivy:cachefileset setid="runtime.fileset" conf="runtime" log="download-only" />
+    </target>
+
+    <target name="-resolve" depends="-resolve-servlet,-resolve-jboss" />
+
+    <target name="compile" description="Compile the sources" depends="-init, -resolve">
+        <javac destdir="${classes.dir}" debug="true" listfiles="false">
+            <classpath>
+                <path refid="compile.classpath" />
+            </classpath>
+            <exclude name="**/package-info.java" />
+            <src path="${src.dir}" />
+        </javac>
+
+        <copy todir="${classes.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/seam.properties" />
+                <include name="**/log4j.xml" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="copy-web" description="Copy the web resources" depends="-init">
+        <copy todir="${war.dir}">
+            <fileset dir="${web.dir}">
+                <include name="**/*" />
+            </fileset>
+        </copy>
+
+        <copy todir="${lib.dir}" failonerror="false" flatten="true">
+            <fileset refid="runtime.fileset" />
+        </copy>
+    </target>
+
+    <target name="dist" description="Create a distributable archive" depends="compile, copy-web">
+        <echo message="build-jboss: ${build-jboss}" />
+        <zip destfile="${dist.dir}/icefaces.war" basedir="${war.dir}" />
+    </target>
+
+    <target name="run-jetty" description="Builds and starts the appilcation using jetty"> 
+      <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="./build-lib/ivy-2.0.0.jar" />
+      <antcall target="dist" >
+        <param name="build-type" value="servlet" />
+      </antcall>
+
+      <ivy:settings file="ivysettings.xml" />
+      <ivy:resolve file="ivy.xml" conf="jetty" log="quiet"/>
+      <ivy:cachepath pathid="jetty.classpath" conf="jetty" log="download-only" />
+
+      <taskdef classpathref="jetty.classpath" resource="tasks.properties" loaderref="jetty.loader" />
+
+      <jetty tempDirectory="${dist.dir}/jetty-temp">
+        <webApp name="icefaces" warfile="${dist.dir}/icefaces.war" contextpath="/icefaces" />
+      </jetty>
+    </target>
+
+    <target name="dependency-report" description="Show and create the Ivy dependency report">
+      <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="./build-lib/ivy-2.0.0.jar" />
+      <ivy:resolve file="ivy.xml" conf="*" />
+      <ivy:report todir="${dist.dir}/dependency-report" conf="*" />
+    </target>
+
+    <target name="clean">
+        <delete dir="${dist.dir}" />
+    </target>
+
+</project>
+

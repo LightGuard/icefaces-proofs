@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivysettings>
+	<settings defaultResolver="oct"/>
+  <include url="${ivy.default.settings.dir}/ivysettings.xml" />
+	<resolvers>
+    <ibiblio name="jboss" m2compatible="true" usepoms="true" root="http://repository.jboss.org/maven2" pattern="[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"/>
+		<chain name="oct">
+			<resolver ref="local"/>
+			<resolver ref="shared"/>
+			<resolver ref="jboss"/> 
+			<resolver ref="public"/>
+		</chain>
+	</resolvers>
+</ivysettings>
+

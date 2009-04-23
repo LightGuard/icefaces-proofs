@@ -1,0 +1,52 @@
+<ui:composition
+    template="template.xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="body">
+        <ice:dataTable value="#{expandedTable.people}" var="person" id="peopleTable"
+                       sortAscending="${expandedTable.sortAsc}" sortColumn="#{expandedTable.sortColumn}">
+            <ice:column>
+                <ice:commandLink actionListener="#{person.toggleGroup}" rendered="#{person.header == true}">
+                    <ice:graphicImage value="#{person.imagePath}" style="border: 0px solid;" />
+                </ice:commandLink>
+            </ice:column>
+            <ice:column>
+                <f:facet name="header">
+                    <ice:commandSortHeader id="fNameHeader" columnName="firstName">
+                        First Name
+                    </ice:commandSortHeader>
+                </f:facet>
+                #{person.wrapped.firstName}
+            </ice:column>
+            <ice:column>
+                <f:facet name="header">
+                    <ice:commandSortHeader id="lNameHeader" columnName="lastName">
+                        Last Name
+                    </ice:commandSortHeader>
+                </f:facet>
+                #{person.wrapped.lastName}
+            </ice:column>
+            <ice:column>
+                <f:facet name="header">
+                    <ice:commandSortHeader id="aliasHeader" columnName="alias">
+                        Alias
+                    </ice:commandSortHeader>
+                </f:facet>
+                #{person.wrapped.nickName}
+            </ice:column>
+            <ice:column>
+                <f:facet name="header">
+                    <ice:commandSortHeader id="emailHeader" columnName="email">
+                        Email
+                    </ice:commandSortHeader>
+                </f:facet>
+                #{person.wrapped.email}
+            </ice:column>
+        </ice:dataTable>
+    </ui:define>
+
+</ui:composition>

@@ -1,0 +1,52 @@
+usePlugin('groovy')
+usePlugin('war')
+usePlugin('jetty')
+
+version = '1.0-SNAPSHOT'
+targetCompatibility = '1.5'
+sourceCompatibility = '1.5'
+
+// Needed for Groovy 1.6 -- http://jira.codehaus.org/browse/GRADLE-323
+compileTests.groovyOptions*.fork = false
+
+repositories {
+  mavenRepo(urls:['http://tdljira2.octanner.com:8083/artifactory/repo'])
+  mavenRepo(urls:['http://repository.jboss.org/maven2'])
+  mavenCentral()
+}
+
+dependencies {
+/*
+  excludeRules.add(org:'com.sun.facelets')
+  excludeRules.add(org:'org.hibernate')
+  excludeRules.add(org:'javax.transaction')
+  excludeRules.add(org:'javax.persistence')
+  excludeRules.add(org:'logkit')
+  excludeRules.add(org:'javax.servlet')
+  excludeRules.add(org:'javax.el')
+  excludeRules.add(org:'xml-apis')
+*/
+  compile(
+    [group:'javax.faces', name:'jsf-api', version:'1.2_12'], 
+    [group:'org.jboss.seam', name:'jboss-seam', version:'2.1.1.GA'] 
+  )
+
+  runtime( 
+      [group: 'org.icefaces', name: 'icefaces-facelets', version:'1.8.0'],
+      [group: 'org.icefaces', name: 'icefaces-comps', version:'1.8.0'],
+      'org.jboss.seam:jboss-seam:2.1.1.GA:@jar',
+      //[group: 'org.jboss.seam', name: 'jboss-seam', version: '2.1.1.GA'],
+      [group: 'org.jboss.seam', name: 'jboss-seam-debug', version: '2.1.1.GA'],
+      [group: 'org.jboss.seam', name: 'jboss-seam-ui', version: '2.1.1.GA'],
+      [group: 'org.jboss.seam', name: 'jboss-seam-ioc', version: '2.1.1.GA'],
+      // These should all be transitive
+      [group: 'javax.transaction', name: 'jta', version:'1.0.1B'],
+      [group: 'org.hibernate', name: 'hibernate-validator', version:'3.0.0.GA'],
+      [group: 'javax.persistence', name: 'persistence-api', version:'1.0'],
+      [group: 'javax.faces', name:'jsf-api', version:'1.2_12'], 
+      [group: 'javax.faces', name:'jsf-impl', version:'1.2_12'] 
+  )
+
+  groovy group: 'org.codehaus.groovy', name: 'groovy-all', version: '1.6.1'
+
+}
