@@ -4,10 +4,10 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/web/WEB-INF/web.xml" optional="false" version="2.5" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" optional="false" version="2.5" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/web" relative="/" />
+          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
         <sourceRoots />
         <building>
@@ -37,6 +37,8 @@
       <configuration ivyFile="$MODULE_DIR$/ivy.xml" useProjectSettings="false" useCustomIvySettings="true" ivySettingsFile="$MODULE_DIR$/ivysettings.xml" onlyResolveSelectedConfigs="true">
         <configsToResolve>
           <config>compile</config>
+          <config>src</config>
+          <config>test</config>
         </configsToResolve>
         <propertiesSettings>
           <propertiesFiles includeProjectLevelPropertiesFiles="true" />
@@ -63,6 +65,7 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/webapp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/groovy" isTestSource="true" />
@@ -87,9 +90,35 @@
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.jboss.seam/jboss-seam/ejbs/jboss-seam-2.1.1.GA.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/javax.faces/jsf-api/jars/jsf-api-1.2_12.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.codehaus.groovy/groovy-all/jars/groovy-all-1.6.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.jboss.el/jboss-el/jars/jboss-el-1.0_02.CR2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/javassist/javassist/jars/javassist-3.8.0.GA.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/dom4j/dom4j/jars/dom4j-1.6.1-brew.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/junit/junit/jars/junit-3.8.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.apache.ant/ant/jars/ant-1.7.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.apache.ant/ant-launcher/jars/ant-launcher-1.7.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/jline/jline/jars/jline-0.9.94.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.icefaces/icefaces-comps/jars/icefaces-comps-1.8.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.icefaces/icefaces-facelets/jars/icefaces-facelets-1.8.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.icefaces/icefaces/jars/icefaces-1.8.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/backport-util-concurrent/backport-util-concurrent/jars/backport-util-concurrent-2.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/commons-beanutils/commons-beanutils/jars/commons-beanutils-1.7.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/commons-collections/commons-collections/jars/commons-collections-3.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/commons-digester/commons-digester/jars/commons-digester-1.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/commons-fileupload/commons-fileupload/jars/commons-fileupload-1.2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/commons-logging/commons-logging-api/jars/commons-logging-api-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/com.sun.xml.fastinfoset/FastInfoset/jars/FastInfoset-1.2.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.jboss.seam/jboss-seam-debug/jars/jboss-seam-debug-2.1.1.GA.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.jboss.seam/jboss-seam-ui/jars/jboss-seam-ui-2.1.1.GA.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.jboss.seam/jboss-seam-ioc/jars/jboss-seam-ioc-2.1.1.GA.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.springframework/spring/jars/spring-2.0.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/commons-logging/commons-logging/jars/commons-logging-1.1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/cglib/cglib-nodep/jars/cglib-nodep-2.1_3.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/javax.faces/jsf-api/sources/jsf-api-1.2_12-sources.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.codehaus.groovy/groovy-all/sources/groovy-all-1.6.1-sources.jar!/" />
+        </SOURCES>
       </library>
     </orderEntry>
   </component>

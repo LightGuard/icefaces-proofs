@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
@@ -8,25 +8,26 @@
 <head>
     <ice:outputDeclaration doctypeRoot="HTML"
                            doctypePublic="-//W3C//DTD XHTML 1.0 Transitional//EN"
-                           doctypeSystem="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+                           doctypeSystem="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Jason Porter's ICEfaces Quick Samples</title>
-    <link rel='stylesheet' type='text/css' href='./xmlhttp/css/rime/rime.css'/>
-    <ui:insert name="head"/>
+    <link rel='stylesheet' type='text/css' href='./xmlhttp/css/rime/rime.css' />
+    <ui:insert name="head" />
 </head>
 <body>
+<ice:messages layout="list" />
 
 <ice:form>
-    <ui:include src="menu.xhtml"/>
+    <ui:include src="menu.xhtml" />
 </ice:form>
 
-<ice:outputConnectionStatus activeLabel="requesting..." styleClass="connectionStatus"/>
+<ice:outputConnectionStatus activeLabel="requesting..." styleClass="connectionStatus" />
 
 <div class="body">
     <h:messages id="messages" globalOnly="true" styleClass="message" rendered="#{showGlobalMessages != 'false'}"
-                errorClass="errormsg" infoClass="infomsg" warnClass="warnmsg"/>
+                errorClass="errormsg" infoClass="infomsg" warnClass="warnmsg" />
     <ice:form>
-        <ui:insert name="body"/>
+        <ui:insert name="body" />
     </ice:form>
 </div>
 </body>

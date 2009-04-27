@@ -16,21 +16,15 @@
                  http://jboss.com/products/seam/transaction http://jboss.com/products/seam/transaction-2.1.xsd
                  http://jboss.com/products/seam/components http://jboss.com/products/seam/components-2.1.xsd">
 
-    <core:init debug="true" transaction-management-enabled="false"/>
+    <core:init debug="true" transaction-management-enabled="false" />
 
     <component scope="APPLICATION" auto-create="true" name="renderManager" class="com.icesoft.faces.async.render.RenderManager" />
 
     <core:manager concurrent-request-timeout="500"
                   conversation-timeout="120000"
                   conversation-id-parameter="cid"
-                  parent-conversation-id-parameter="pid" />
+                  parent-conversation-id-parameter="pid" default-flush-mode="MANUAL" />
 
-    <tx:no-transaction/>
-
-    <!--<persistence:entity-manager-factory name="emf" persistence-unit-name="icefaces"/>-->
-
-    <!--<persistence:managed-persistence-context name="entityManager"-->
-                                             <!--auto-create="true"-->
-                                             <!--entity-manager-factory="#{emf}" />-->
+    <tx:no-transaction />
 
 </components>

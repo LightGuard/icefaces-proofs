@@ -3,6 +3,7 @@
      xmlns:ui="http://java.sun.com/jsf/facelets"
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:s="http://jboss.com/products/seam/taglib"
      xmlns:ice="http://www.icesoft.com/icefaces/component">
     <ice:panelGroup id="menuPanelGroup" styleClass="formBorderHighlight">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -10,9 +11,10 @@
                 <td class="iceDatTblColHdr2">
                     <ice:panelGrid id="menuPanelGrid" columns="1" columnClasses="leftMenu">
                         <ice:panelGroup id="menuPanelGroupLeft">
-                            <ice:outputLink value="/expandedTable.seam">Expanded Table</ice:outputLink> |
-                            <ice:outputLink value="/octSortExpandTable.seam">O.C.T. Sortable Expanded Table</ice:outputLink> | 
-                            <ice:outputLink value="/jquery-watermark.seam">jQuery Watermark</ice:outputLink> |
+                            <s:link view="/expandedTable.xhtml" propagation="join">Expanded Table</s:link> | &#160;
+                            <s:link view="/SortExpandTable.xhtml" propagation="join">Sortable Expanded Table</s:link> | &#160;
+                            <s:link view="/jquery-watermark.xhtml" propagation="join">jQuery Watermark</s:link> | &#160;
+                            <s:link view="/ice-column.xhtml" propagation="join">ice:column tests</s:link> | &#160;
                         </ice:panelGroup>
                     </ice:panelGrid>
                 </td>

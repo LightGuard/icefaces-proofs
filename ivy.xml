@@ -2,8 +2,9 @@
 <ivy-module version="1.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
     <info organisation="com.octanner" module="poc.icefaces" />
-    <configurations defaultconfmapping="compile->default;runtime->master;jetty->default">
+    <configurations defaultconfmapping="compile->default;runtime->master;jetty->default;src->sources;test->default">
         <conf name="compile" transitive="false" />
+        <conf name="src" visibility="private" />
         <conf name="runtime" extends="compile" transitive="true" />
         <conf name="test" visibility="private" extends="compile,runtime" />
         <conf name="jetty" visibility="private" />
@@ -12,8 +13,8 @@
     <dependencies>
         <dependency org="org.icefaces" name="icefaces-comps" rev="1.8.0" conf="runtime" />
         <dependency org="org.icefaces" name="icefaces-facelets" rev="1.8.0" conf="runtime" />
-        <dependency org="org.icefaces" name="icefaces" rev="1.8.0" conf="runtime->default" />
-        <dependency org="org.jboss.seam" name="jboss-seam" rev="2.1.1.GA" conf="compile;runtime->runtime,provided,master">
+        <dependency org="org.icefaces" name="icefaces" rev="1.8.0" conf="runtime->default;src" />
+        <dependency org="org.jboss.seam" name="jboss-seam" rev="2.1.1.GA" conf="compile;runtime->runtime,provided,master;src">
             <artifact name="jboss-seam" type="ejb" ext="jar" />
         </dependency>
         <dependency org="javax.transaction" name="jta" rev="1.0.1B" conf="servlet->default" />
@@ -24,9 +25,10 @@
         <dependency org="org.jboss.seam" name="jboss-seam-ioc" rev="2.1.1.GA" conf="runtime,servlet->default,optional">
             <exclude org="org.jboss.seam" module="jboss-seam" />
         </dependency>
-        <dependency org="javax.faces" name="jsf-api" rev="1.2_12" conf="compile,servlet->master" />
+        <dependency org="javax.faces" name="jsf-api" rev="1.2_12" conf="compile,servlet->master;src" />
         <dependency org="javax.faces" name="jsf-impl" rev="1.2_12" conf="servlet->master" />
-        <dependency org="org.codehaus.groovy" name="groovy-all" rev="1.6.1" conf="compile,test->default" />
+        <dependency org="org.codehaus.groovy" name="groovy-all" rev="1.6.1" conf="compile,test->default;src" />
+        <dependency org="junit" name="junit" rev="3.8.2" conf="test" />
 
         <dependency org="org.mortbay.jetty" name="jetty-ant" rev="6.1.9" conf="jetty" />
         <dependency org="org.mortbay.jetty" name="jsp-2.1" rev="6.1.9" conf="jetty" />
