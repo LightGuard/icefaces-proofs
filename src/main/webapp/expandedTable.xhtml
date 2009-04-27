@@ -1,12 +1,10 @@
 <ui:composition
-    template="template.xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:c="http://java.sun.com/jstl/core"
     xmlns:ice="http://www.icesoft.com/icefaces/component"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <ui:define name="body">
         <ice:dataTable value="#{expandedTable.people}" var="person" id="peopleTable"
                        sortAscending="${expandedTable.sortAsc}" sortColumn="#{expandedTable.sortColumn}">
             <ice:column>
@@ -47,6 +45,6 @@
                 #{person.wrapped.email}
             </ice:column>
         </ice:dataTable>
-    </ui:define>
+
 
 </ui:composition>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition
+    template="template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="body">
+        <ice:panelTabSet id="datatableTabs">
+            <ice:panelTab id="expandableDatatableTab" label="Expandable Table">
+                <ui:include src="./expandedTable.xhtml" />
+            </ice:panelTab>
+            <ice:panelTab id="sortableExpandableDatatableTab" label="Sorted Expandable Table">
+                <ui:include src="./SortExpandTable.xhtml" />
+            </ice:panelTab>
+            <ice:panelTab id="columnsTab" label="Columns Examples">
+                <ui:include src="./ice-column.xhtml" />
+            </ice:panelTab>
+        </ice:panelTabSet>
+    </ui:define>
+
+</ui:composition>

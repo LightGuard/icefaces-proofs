@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="1.0" xmlns:m="http://ant.apache.org/ivy/maven" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
-    <info organisation="com.octanner" module="poc.icefaces" />
+    <info organisation="org.examples" module="icefaces-proofs" />
     <configurations defaultconfmapping="compile->default;runtime->master;jetty->default;src->sources;test->default">
         <conf name="compile" transitive="false" />
         <conf name="src" visibility="private" />

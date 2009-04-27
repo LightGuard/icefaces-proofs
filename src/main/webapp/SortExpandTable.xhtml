@@ -1,12 +1,10 @@
 <ui:composition
-    template="template.xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:c="http://java.sun.com/jstl/core"
     xmlns:ice="http://www.icesoft.com/icefaces/component"
     xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <ui:define name="body">
         <ice:dataTable value="#{sortableTable.dataModel}" var="_info" id="infoTable"
                        sortAscending="${sortableTable.ascending}" sortColumn="#{sortableTable.sortColumn}">
             <ice:column>
@@ -20,8 +18,7 @@
                         Client ID / Program ID / Campaign ID
                     </ice:commandSortHeader>
                 </f:facet>
-                #{nf
-                    o.id}
+                #{_info.id}
             </ice:column>
             <ice:column>
                 <f:facet name="header">
@@ -37,10 +34,8 @@
                         Client Status / Program Status / Campaign Status
                     </ice:commandSortHeader>
                 </f:facet>
-                #{_info.statu
-                        s}
+                #{_info.status}
             </ice:column>
         </ice:dataTable>
-    </ui:define>
 
 </ui:composition>

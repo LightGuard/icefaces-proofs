@@ -11,9 +11,7 @@ testCompile.groovyOptions*.fork = false
 
 dependencies {
   addMavenRepo()
-  addMavenRepo('http://tdljira2.octanner.com:8083/artifactory/repo')
   addMavenRepo('http://repository.jboss.org/maven2')
-  addMavenStyleRepo('artifactory', 'http://tdljira2.octanner.com:8083/artifactory/repo')
   addMavenStyleRepo('jboss', 'http://repository.jboss.org/maven2')
 
   addConfiguration('servlet', { 

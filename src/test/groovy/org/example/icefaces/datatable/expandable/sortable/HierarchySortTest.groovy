@@ -1,22 +1,10 @@
 package org.example.icefaces.datatable.expandable.sortable
 
-import org.example.icefaces.datatable.expandable.sortable.ParentInfo
-import org.example.icefaces.datatable.expandable.sortable.GrandChildInfo
 import org.example.icefaces.datatable.expandable.sortable.ChildInfo
-import org.example.icefaces.datatable.expandable.sortable.ChildInfo
-import org.example.icefaces.datatable.expandable.sortable.ParentInfo
-import org.example.icefaces.datatable.expandable.sortable.GrandChildInfo
-import org.example.icefaces.datatable.expandable.sortable.DisplayableInfo
 import org.example.icefaces.datatable.expandable.sortable.DisplayInfoComparator
-
-/*
-* Copyright 2008 - 2009 OC Tanner Company.  All Rights Reserved.
-*
-* This software is the property of OC Tanner Company.  Use of this software in whole or in
-* part without the express written consent of OC Tanner is strictly prohibited.
-*
-* $Id$
-*/
+import org.example.icefaces.datatable.expandable.sortable.DisplayableInfo
+import org.example.icefaces.datatable.expandable.sortable.GrandChildInfo
+import org.example.icefaces.datatable.expandable.sortable.ParentInfo
 
 public class HierarchySortTest extends GroovyTestCase
 {

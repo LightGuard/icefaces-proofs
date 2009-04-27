@@ -10,7 +10,6 @@ sourceCompatibility = '1.5'
 compileTests.groovyOptions*.fork = false
 
 repositories {
-  mavenRepo(urls:['http://tdljira2.octanner.com:8083/artifactory/repo'])
   mavenRepo(urls:['http://repository.jboss.org/maven2'])
   mavenCentral()
 }
