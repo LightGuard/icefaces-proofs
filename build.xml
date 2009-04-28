@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <project name="icefaces_pocs" default="dist" xmlns:ivy="antlib:org.apache.ivy.ant">
     <description>
-        Jason's ICEfaces PoC container
+        ICEfaces PoC container
     </description>
 
+    <!-- Properties needed for this to work -->
     <property name="dist.dir" value="build" />
     <property name="war.dir" value="${dist.dir}/exploded" />
     <property name="classes.dir" value="${dist.dir}/classes" />
@@ -12,6 +13,8 @@
     <property name="src.dir" value="src/main" />
     <property name="test.src.dir" value="src/test" />
     <property name="web.dir" value="src/main/webapp" />
+
+    <!-- SETUP TASKS -->
 
     <target name="-ask-deploy-env" unless="build-type">
         <input addproperty="build-type" message="Are you deploying to JBoss or a servlet container?" validargs="jboss,servlet"
@@ -49,6 +52,8 @@
     </target>
 
     <target name="-resolve" depends="-resolve-servlet,-resolve-jboss" />
+
+    <!-- User tasks -->
 
     <target name="compile" description="Compile the sources" depends="-init, -resolve">
         <taskdef name="groovyc" classname="org.codehaus.groovy.ant.Groovyc" classpathref="compile.classpath" />
@@ -116,18 +121,49 @@
 
     <target name="run-jetty" description="Builds and starts the appilcation using jetty">
         <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="./build-lib/ivy-2.0.0.jar" />
-        <antcall target="dist">
+        <antcall target="compile">
             <param name="build-type" value="servlet" />
         </antcall>
 
         <ivy:settings file="ivysettings.xml" />
-        <ivy:resolve file="ivy.xml" conf="jetty" log="quiet" />
+        <ivy:resolve file="ivy.xml" conf="jetty,servlet" log="quiet" />
+        <ivy:cachefileset setid="runtime.fileset" conf="servlet" log="download-only" />
         <ivy:cachepath pathid="jetty.classpath" conf="jetty" log="download-only" />
 
         <taskdef classpathref="jetty.classpath" resource="tasks.properties" loaderref="jetty.loader" />
 
         <jetty tempDirectory="${dist.dir}/jetty-temp">
-            <webApp name="icefaces" warfile="${dist.dir}/icefaces.war" contextpath="/icefaces" />
+            <webapp name="icefaces" contextpath="/icefaces" scanintervalseconds="5" warfile="${web.dir}">
+                <lib refid="runtime.fileset" />
+                <classes dir="${classes.dir}" includes="**/*" />
+            </webapp>
+        </jetty>
+    </target>
+
+    <target name="debug-jetty" description="Builds and starts the appilcation in debug mode using jetty">
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpath="./build-lib/ivy-2.0.0.jar" />
+        <antcall target="compile">
+            <param name="build-type" value="servlet" />
+        </antcall>
+
+        <ivy:settings file="ivysettings.xml" />
+        <ivy:resolve file="ivy.xml" conf="jetty,servlet" log="quiet" />
+        <ivy:cachefileset setid="runtime.fileset" conf="servlet" log="download-only" />
+        <ivy:cachepath pathid="jetty.classpath" conf="jetty" log="download-only" />
+
+        <taskdef classpathref="jetty.classpath" resource="tasks.properties" loaderref="jetty.loader" />
+
+        <jetty tempDirectory="${dist.dir}/jetty-temp">
+            <webapp name="icefaces" contextpath="/icefaces" scanintervalseconds="5" warfile="${web.dir}">
+                <lib refid="runtime.fileset" />
+                <classes dir="${classes.dir}" includes="**/*" />
+            </webapp>
+            <systemProperties>
+                <systemProperty name="STOP.PORT" value="8079"/>
+                <systemProperty name="STOP.KEY" value="secret"/>
+                <systemProperty name="debug" value=""/>
+                <systemProperty name="runjdwp:transport" value="dt_socket,address=8000,server=y,suspend=y"/>
+            </systemProperties>
         </jetty>
     </target>
 
