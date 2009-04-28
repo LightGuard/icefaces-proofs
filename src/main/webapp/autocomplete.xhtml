@@ -5,10 +5,14 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:ice="http://www.icesoft.com/icefaces/component"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:s="http://jboss.com/products/seam/taglib">
 
     <ui:define name="body">
-
+        <ice:selectInputText id="testSelectInput" rows="15" width="300" valueChangeListener="#{autocomplete.updateList}">
+            <s:selectItems value="#{autocomplete.list}" var="_item" itemLabel="#{_item}" itemValue="#{_item}" label="#{_item}"/>
+        </ice:selectInputText>
+        <br />
+        <ice:outputText id="hitsBox" effect="#{autocomplete.hitEffect}" value="Server hits: #{autocomplete.hits}" />
     </ui:define>
 
 </ui:composition>

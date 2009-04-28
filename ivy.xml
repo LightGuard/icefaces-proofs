@@ -13,7 +13,7 @@
     <dependencies>
         <dependency org="org.icefaces" name="icefaces-comps" rev="1.8.0" conf="runtime" />
         <dependency org="org.icefaces" name="icefaces-facelets" rev="1.8.0" conf="runtime" />
-        <dependency org="org.icefaces" name="icefaces" rev="1.8.0" conf="runtime->default;src" />
+        <dependency org="org.icefaces" name="icefaces" rev="1.8.0" conf="compile;src" />
         <dependency org="org.jboss.seam" name="jboss-seam" rev="2.1.1.GA" conf="compile;runtime->runtime,provided,master;src">
             <artifact name="jboss-seam" type="ejb" ext="jar" />
         </dependency>

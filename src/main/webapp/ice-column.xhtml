@@ -4,51 +4,55 @@
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:ice="http://www.icesoft.com/icefaces/component"
-    xmlns:ui="http://java.sun.com/jsf/facelets">
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:s="http://jboss.com/products/seam/taglib">
 
-        <ice:panelCollapsible id="basicColumns">
-            <f:facet name="header">
-                <ice:panelGroup>
-                    <ice:outputText value="Basic Columns example" />
-                </ice:panelGroup>
-            </f:facet>
+    <ice:panelCollapsible id="basicColumns">
+        <f:facet name="header">
+            <ice:panelGroup>
+                <ice:outputText value="Basic Columns example" />
+            </ice:panelGroup>
+        </f:facet>
 
-            <p>
-                <ice:dataTable id="basicDataTable" value="#{basicRowData}" var="_row">
-                    <ice:column>#{_row}</ice:column>
-                    <ice:columns value="#{basicColumnData}" var="_data">
-                        #{_data}
-                    </ice:columns>
-                </ice:dataTable>
-            </p>
-        </ice:panelCollapsible>
-
-        <ice:panelCollapsible id="objectColumns">
-            <f:facet name="header">
-                <ice:panelGroup>
-                    <ice:outputText value="Simple Object Datamodel example" />
-                </ice:panelGroup>
-            </f:facet>
-            <ice:dataTable id="basicObjectBackedTable" value="#{basicObjectRowData}" var="_row">
-                <!-- <ice:column>#{_row}</ice:column> -->
-                <ice:columns value="#{basicObjectColumnData}" var="_col">
-                    <f:facet name="header">
-                        <ice:outputText value="#{_col}" />
-                    </f:facet>
-                    #{_row[_col]}
+        <p>
+            <ice:dataTable id="basicDataTable" value="#{basicRowData}" var="_row">
+                <ice:column>#{_row}</ice:column>
+                <ice:columns value="#{basicColumnData}" var="_data">
+                    #{_data}
                 </ice:columns>
             </ice:dataTable>
-            <br />
-            Editable:
-            <ice:dataTable id="basicObjectBackedEditableTable" value="#{basicObjectRowData}" var="_row">
-                <!-- <ice:column>#{_row}</ice:column> -->
-                <ice:columns value="#{basicObjectColumnData}" var="_col">
-                    <f:facet name="header">
-                        <ice:outputText value="#{_col}" />
-                    </f:facet>
-                    <ice:inputText id="#{_row}Input" value="#{_row[_col]}" partialSubmit="true" />
-                </ice:columns>
-            </ice:dataTable>
-        </ice:panelCollapsible>
+        </p>
+    </ice:panelCollapsible>
+
+    <ice:panelCollapsible id="objectColumns">
+        Columns:
+        <ice:selectManyListbox id="objectBackingColumnSelect" value="#{basicColumn.actualObjectColumnData}"
+                               partialSubmit="true">
+            <s:selectItems value="#{basicObjectColumnData}" var="_colData" label="#{_colData}" itemValue="#{_colData}" />
+        </ice:selectManyListbox>
+        <br />
+        <f:facet name="header">
+            <ice:panelGroup>
+                <ice:outputText value="Simple Object Datamodel example" />
+            </ice:panelGroup>
+        </f:facet>
+        <ice:dataTable id="basicObjectBackedTable" value="#{basicColumn.objectRowData}" var="_row">
+            <ice:columns value="#{basicColumn.actualObjectColumnData}" var="_col">
+                <f:facet name="header">
+                    <ice:outputText value="#{_col}" />
+                </f:facet>
+                #{_row[_col]}
+            </ice:columns>
+        </ice:dataTable>
+        <br />
+        Editable:
+        <ice:dataTable id="basicObjectBackedEditableTable" value="#{basicColumn.objectRowData}" var="_row">
+            <ice:columns value="#{basicColumn.actualObjectColumnData}" var="_col">
+                <f:facet name="header">
+                    <ice:outputText value="#{_col}" />
+                </f:facet>
+                <ice:inputText id="#{_row}Input" value="#{_row[_col]}" partialSubmit="true" />
+            </ice:columns>
+        </ice:dataTable>
+    </ice:panelCollapsible>
 
 </ui:composition>
