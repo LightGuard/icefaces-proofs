@@ -21,7 +21,13 @@ public class BasicColumns
     @Factory ("basicRowData")
     public List<String> createData()
     {
-        ['One', 'Two', 'Three']
+        ['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten']
+    }
+
+    @Factory("letters")
+    public List<String> createLetters()
+    {
+        1..100 
     }
 
     @Factory ("basicObjectColumnData")

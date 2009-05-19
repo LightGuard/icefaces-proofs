@@ -1,0 +1,44 @@
+<ui:composition
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:c="http://java.sun.com/jstl/core"
+    xmlns:ice="http://www.icesoft.com/icefaces/component"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+
+        <ice:dataPaginator id="lazyLoadPaginator" actionListener="#{lazyLoaded.paginatorActionListener}"
+            for="lazyLoadTable" paginatorMaxPages="5" paginator="true" fastStep="5">
+            <f:facet name="first">
+                <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-first.gif" style="border:none;" />
+            </f:facet>
+
+            <f:facet name="last">
+                <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-last.gif" style="border:none;" />
+            </f:facet>
+
+            <f:facet name="previous">
+                <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-previous.gif" style="border:none;" />
+            </f:facet>
+
+            <f:facet name="next">
+                <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-next.gif" style="border:none;" />
+            </f:facet>
+
+            <f:facet name="fastforward">
+                <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-ff.gif" style="border:none;" />
+            </f:facet>
+
+            <f:facet name="fastrewind">
+                <ice:graphicImage url="./xmlhttp/css/rime/css-images/arrow-fr.gif" style="border:none;" />
+            </f:facet>
+        </ice:dataPaginator>
+        <ice:dataTable id="lazyLoadTable" rows="#{customerRowList.maxResults}" value="#{customerRowList.dataModel}" var="_row">
+            <ice:columns value="#{_row.fields}" var="_field">
+                <f:facet name="header">
+                    <ice:outputText value="#{_field.fieldName}" />
+                </f:facet>
+                <ice:outputText value="#{_field.fieldValue}" />
+            </ice:columns>
+        </ice:dataTable>
+
+
+</ui:composition>

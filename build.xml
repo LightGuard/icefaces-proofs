@@ -13,6 +13,7 @@
     <property name="src.dir" value="src/main" />
     <property name="test.src.dir" value="src/test" />
     <property name="web.dir" value="src/main/webapp" />
+    <property name="resource.dir" value="src/main/resources" />
 
     <!-- SETUP TASKS -->
 
@@ -96,7 +97,7 @@
         </junit>
     </target>
 
-    <target name="copy-web" description="Copy the web resources" depends="-init">
+    <target name="copy-web" description="Copy the web resources" depends="-init, copy-resources">
         <copy todir="${war.dir}">
             <fileset dir="${web.dir}">
                 <include name="**/*" />
@@ -114,6 +115,12 @@
         </copy>
     </target>
 
+     <target name="copy-resources" description="Copies the resources to the target" depends="-init">
+         <copy todir="${classes.dir}/META-INF">
+            <fileset dir="${resource.dir}/META-INF" />
+         </copy>
+     </target>
+
     <target name="dist" description="Create a distributable archive" depends="compile, copy-web">
         <echo message="build-jboss: ${build-jboss}" level="debug" />
         <zip destfile="${dist.dir}/icefaces.war" basedir="${war.dir}" />
@@ -124,6 +131,10 @@
         <antcall target="compile">
             <param name="build-type" value="servlet" />
         </antcall>
+        <antcall target="copy-resources">
+            <param name="build-type" value="servlet" />
+        </antcall>
+
 
         <ivy:settings file="ivysettings.xml" />
         <ivy:resolve file="ivy.xml" conf="jetty,servlet" log="quiet" />

@@ -16,7 +16,7 @@
                  http://jboss.com/products/seam/transaction http://jboss.com/products/seam/transaction-2.1.xsd
                  http://jboss.com/products/seam/components http://jboss.com/products/seam/components-2.1.xsd">
 
-    <core:init debug="true" transaction-management-enabled="false" />
+    <core:init debug="true"/>
 
     <component scope="APPLICATION" auto-create="true" name="renderManager" class="com.icesoft.faces.async.render.RenderManager" />
 
@@ -25,6 +25,10 @@
                   conversation-id-parameter="cid"
                   parent-conversation-id-parameter="pid" default-flush-mode="MANUAL" />
 
-    <tx:no-transaction />
+    <persistence:entity-manager-factory name="entityManagerFactory" persistence-unit-name="icefaces-proofs" />
+    <persistence:managed-persistence-context name="entityManager" entity-manager-factory="#{entityManagerFactory}"
+                                             auto-create="true" />
+
+    <tx:entity-transaction entity-manager="#{entityManager}" />
 
 </components>

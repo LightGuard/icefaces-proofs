@@ -60,6 +60,22 @@
         <priority value="DEBUG" />
     </category>
 
+    <category name="org.hibernate">
+        <priority value="WARN" />
+    </category>
+    <category name="org.hibernate.SQL">
+        <priority value="TRACE" />
+    </category>
+    <category name="org.hibernate.type">
+        <priority value="TRACE" />
+    </category>
+    <category name="org.hibernate.loader">
+        <priority value="INFO" />
+    </category>
+    <category name="org.hibernate.cache">
+        <priority value="TRACE" />
+    </category>
+
     <root>
         <appender-ref ref="CONSOLE" />
         <appender-ref ref="FILE" />

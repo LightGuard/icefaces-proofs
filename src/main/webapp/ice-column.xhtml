@@ -23,6 +23,28 @@
         </p>
     </ice:panelCollapsible>
 
+    <ice:panelCollapsible id="scrollable">
+        <f:facet name="header">
+            <ice:panelGroup>
+                <ice:outputText value="Scrolling Table" />
+            </ice:panelGroup>
+        </f:facet>
+
+        <p>
+            Looks like you need to get the parent of this table to change the style so you can scroll it.
+            <ice:dataTable id="scrollingTable" value="#{basicRowData}" var="_row" scrollable="true" scrollHeight="25"
+                               columnWidths="10">
+                <ice:headerRow>
+                    <ice:outputText value="Letters" />
+                </ice:headerRow>
+                <ice:column>#{_row}</ice:column>
+                <ice:columns value="#{letters}" var="_data">
+                    #{_data}
+                </ice:columns>
+            </ice:dataTable>
+        </p>
+    </ice:panelCollapsible>
+
     <ice:panelCollapsible id="objectColumns">
         Columns:
         <ice:selectManyListbox id="objectBackingColumnSelect" value="#{basicColumn.actualObjectColumnData}"

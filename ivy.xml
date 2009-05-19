@@ -8,18 +8,19 @@
         <conf name="runtime" extends="compile" transitive="true" />
         <conf name="test" visibility="private" extends="compile,runtime" />
         <conf name="jetty" visibility="private" />
-        <conf name="servlet" extends="runtime" />
+        <conf name="servlet" extends="runtime" transitive="true"/>
     </configurations>
     <dependencies>
-        <dependency org="org.icefaces" name="icefaces-comps" rev="1.8.0" conf="runtime" />
+        <dependency org="org.icefaces" name="icefaces-comps" rev="1.8.0" conf="compile;runtime" />
         <dependency org="org.icefaces" name="icefaces-facelets" rev="1.8.0" conf="runtime" />
         <dependency org="org.icefaces" name="icefaces" rev="1.8.0" conf="compile;src" />
         <dependency org="org.jboss.seam" name="jboss-seam" rev="2.1.1.GA" conf="compile;runtime->runtime,provided,master;src">
             <artifact name="jboss-seam" type="ejb" ext="jar" />
         </dependency>
         <dependency org="javax.transaction" name="jta" rev="1.0.1B" conf="servlet->default" />
-        <dependency org="org.hibernate" name="hibernate-validator" rev="3.0.0.GA" force="true" conf="servlet->default" />
-        <dependency org="javax.persistence" name="persistence-api" rev="1.0" conf="servlet->master" />
+        <dependency org="org.hibernate" name="hibernate-validator" rev="3.0.0.GA" conf="compile" />
+        <dependency org="org.hibernate" name="hibernate-entitymanager" rev="3.4.0.GA" conf="servlet->default" />
+        <dependency org="javax.persistence" name="persistence-api" rev="1.0" conf="compile,servlet->master" />
         <dependency org="org.jboss.seam" name="jboss-seam-debug" rev="2.1.1.GA" conf="runtime" />
         <dependency org="org.jboss.seam" name="jboss-seam-ui" rev="2.1.1.GA" conf="runtime" />
         <dependency org="org.jboss.seam" name="jboss-seam-ioc" rev="2.1.1.GA" conf="runtime,servlet->default,optional">
@@ -27,6 +28,10 @@
         </dependency>
         <dependency org="javax.faces" name="jsf-api" rev="1.2_12" conf="compile,servlet->master;src" />
         <dependency org="javax.faces" name="jsf-impl" rev="1.2_12" conf="servlet->master" />
+        <dependency org="org.slf4j" name="slf4j-api" rev="1.5.6" conf="runtime" />
+        <dependency org="org.slf4j" name="slf4j-log4j12" rev="1.5.6" conf="runtime" />
+        <dependency org="com.h2database" name="h2" rev="1.1.112" conf="runtime" />
+        <dependency org="log4j" name="log4j" rev="1.2.15" conf="servlet->master" />
         <dependency org="org.codehaus.groovy" name="groovy-all" rev="1.6.1" conf="compile,test->default;src" />
         <dependency org="junit" name="junit" rev="3.8.2" conf="test" />
 
@@ -34,8 +39,11 @@
         <dependency org="org.mortbay.jetty" name="jsp-2.1" rev="6.1.9" conf="jetty" />
 
         <exclude org="com.sun.facelets" />
+        <exclude org="com.sun.jdmk" />
+        <exclude org="com.sun.jmx" />
+        <exclude org="org.apache.ant" conf="runtime, servlet" />
+        <exclude org="org.hibernate" module="hibernate" conf="runtime, servlet"/>
         <exclude org="javax.faces" conf="runtime,!servlet" />
-        <exclude org="org.hibernate" conf="runtime,!servlet" />
         <exclude org="javax.transaction" conf="runtime,!servlet" />
         <exclude org="javax.persistence" conf="runtime,!servlet" />
         <exclude org="logkit" module="logkit" />
