@@ -7,11 +7,11 @@ import org.jboss.seam.annotations.Scope;
 import org.jboss.seam.annotations.intercept.BypassInterceptors;
 import org.jboss.seam.log.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.io.Serializable;
 
 /**
  * Backing bean for the Expanded Table example.
@@ -43,20 +43,20 @@ public class ExpandedTableBackingBean implements Serializable
         List<PersonUiWrapper> males = new ArrayList<PersonUiWrapper>(5);
         PersonUiWrapper maleHeader = new PersonUiWrapper(new Person("Males", null, null, null), males, people);
         people.add(maleHeader);
-        males.add(new PersonUiWrapper(new Person("Jason", "Porter", "jporter@me.com", "LightGuard")));
-        males.add(new PersonUiWrapper(new Person("Trevor", "Whitlock", "twhitlock@me.com", "chikin")));
-        males.add(new PersonUiWrapper(new Person("Michael", "Felix", "mfelix@me.com", "Mike")));
-        males.add(new PersonUiWrapper(new Person("Volkmar", "Nitz", "vnitz@me.com", "The Big Cheese")));
-        males.add(new PersonUiWrapper(new Person("Tom", "Compagno", "tcompagno@me.com", "The Boss")));
+        males.add(new PersonUiWrapper(new Person("Jason", "Porter", "jporter@what.com", "LightGuard")));
+        males.add(new PersonUiWrapper(new Person("Trevor", "Whitlock", "twhitlock@what.com", "chikin")));
+        males.add(new PersonUiWrapper(new Person("Michael", "Felix", "mfelix@what.com", "Mike")));
+        males.add(new PersonUiWrapper(new Person("Bill", "Comp", "bcomp@what.com", "The Big Cheese")));
+        males.add(new PersonUiWrapper(new Person("Tom", "Compagno", "tcompagno@what.com", "The Boss")));
 
         List<PersonUiWrapper> females = new ArrayList<PersonUiWrapper>(5);
         PersonUiWrapper femaleHeader = new PersonUiWrapper(new Person("Females", null, null, null), females, people);
         people.add(femaleHeader);
-        females.add(new PersonUiWrapper(new Person("Bobbi", "Alexandrova", "balexandrova@me.com", "")));
-        females.add(new PersonUiWrapper(new Person("Sue", "Ure", "sure@me.com", "Food Lady")));
-        females.add(new PersonUiWrapper(new Person("Tessie", "Porter", "tporter@me.com", "My Boss")));
-        females.add(new PersonUiWrapper(new Person("Carolyn", "Tanner Irish", "cirish@me.com", "Owner")));
-        females.add(new PersonUiWrapper(new Person("Emily", "Porter", "eporter@me.com", "The Cute One")));
+        females.add(new PersonUiWrapper(new Person("Bobbi", "Alexandrova", "balexandrova@what.com", "")));
+        females.add(new PersonUiWrapper(new Person("Sue", "Ure", "sure@what.com", "Food Lady")));
+        females.add(new PersonUiWrapper(new Person("Tessie", "Porter", "tporter@what.com", "My Boss")));
+        females.add(new PersonUiWrapper(new Person("Carolyn", "Irish", "cirish@what.com", "Owner")));
+        females.add(new PersonUiWrapper(new Person("Emily", "Porter", "eporter@what.com", "The Cute One")));
 
         maleHeader.setToggled(true);
         femaleHeader.setToggled(false);
