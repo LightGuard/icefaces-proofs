@@ -31,9 +31,15 @@
     </ui:define>
 
     <ui:define name="body">
-        <ice:inputText id="watermark" onblur="jQuery(this).updnWatermark();" title="Input Text" value="#{watermark.value}" />
-        <br /><br />
-        Value on the server: #{watermark.value}
+        <div>
+            <ice:inputText id="watermark" onblur="jQuery(this).updnWatermark();"
+                           title="Input Text" value="#{watermark.value}" />
+            <br/>
+            <ice:inputText id="requiredText" label="RequiredText" required="true" value="#{watermark.required}"/>
+            <ice:commandButton value="Subit" />
+            <br /><br />
+            Value on the server: #{watermark.value}
+        </div>
     </ui:define>
 
 </ui:composition>

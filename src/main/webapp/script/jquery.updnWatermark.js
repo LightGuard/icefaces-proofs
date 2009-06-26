@@ -16,13 +16,20 @@
             if (this.title) {
                 var $input = $(this);
                 var pos = $input.position();
+                var $oldLabel = $(this.id + "Label");
+                if ($oldLabel)
+                {
+                    alert("Removing old label");
+                    document.remove($(this.id + "Label"));
+                }
                 var $label = $(document.createElement("label"))
                     .text(this.title)
                     .attr("for", this.id)
+                    .attr("id", this.id + "Label")
                     .css({
-                        position: "absolute",
-                        left: pos.left + 2,
-                        top: pos.top + 4
+                        position: "relative",
+                        left: 2,
+                        top: 4
                     })
                     .addClass(options.cssClass)
                     .hide()

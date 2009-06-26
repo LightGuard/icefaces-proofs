@@ -11,6 +11,17 @@ import java.io.Serializable;
 public class WatermarkBacking implements Serializable
 {
     private String value;
+    private String required;
+
+    public String getRequired()
+    {
+        return required;
+    }
+
+    public void setRequired(String required)
+    {
+        this.required = required;
+    }
 
     public String getValue()
     {

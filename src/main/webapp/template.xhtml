@@ -15,7 +15,6 @@
     <ui:insert name="head" />
 </head>
 <body>
-<ice:messages layout="list" />
 
 <ice:form>
     <ui:include src="menu.xhtml" />
@@ -24,9 +23,8 @@
 <ice:outputConnectionStatus activeLabel="requesting..." styleClass="connectionStatus" />
 
 <div class="body">
-    <h:messages id="messages" globalOnly="true" styleClass="message" rendered="#{showGlobalMessages != 'false'}"
-                errorClass="errormsg" infoClass="infomsg" warnClass="warnmsg" />
-    <ice:form>
+    <ice:form id="mainForm">
+        <ice:messages id="messages" />
         <ui:insert name="body" />
     </ice:form>
 </div>

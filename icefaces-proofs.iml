@@ -94,7 +94,6 @@
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.codehaus.groovy/groovy-all/jars/groovy-all-1.6.1.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.jboss.el/jboss-el/jars/jboss-el-1.0_02.CR2.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/javassist/javassist/jars/javassist-3.8.0.GA.jar!/" />
-          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/dom4j/dom4j/jars/dom4j-1.6.1-brew.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/junit/junit/jars/junit-3.8.2.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.apache.ant/ant/jars/ant-1.7.1.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.apache.ant/ant-launcher/jars/ant-launcher-1.7.1.jar!/" />
@@ -122,6 +121,17 @@
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/antlr/antlr/jars/antlr-2.7.6.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/cglib/cglib/jars/cglib-2.1_3.jar!/" />
           <root url="jar://$MODULE_DIR$/../../.ivy2/cache/asm/asm/jars/asm-1.5.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.hibernate/hibernate-validator/jars/hibernate-validator-3.0.0.GA.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.mortbay.jetty/jetty/jars/jetty-6.1.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/net.sourceforge.jexcelapi/jxl/jars/jxl-2.6.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/log4j/log4j/jars/log4j-1.2.14.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/javax.transaction/jta/jars/jta-1.0.1B.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/dom4j/dom4j/jars/dom4j-1.6.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.mortbay.jetty/jetty-util/jars/jetty-util-6.1.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.mortbay.jetty/servlet-api-2.5/jars/servlet-api-2.5-6.1.9.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.slf4j/slf4j-api/jars/slf4j-api-1.5.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/org.slf4j/slf4j-log4j12/jars/slf4j-log4j12-1.5.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../.ivy2/cache/com.h2database/h2/jars/h2-1.1.112.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES>
